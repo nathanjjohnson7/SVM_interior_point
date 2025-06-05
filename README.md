@@ -1,1 +1,2 @@
-# SVM_interior_point
+# SVM (Support Vector Machine) - Interior Point Method
+
