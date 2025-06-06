@@ -47,14 +47,14 @@ Newton decrement (as seen in Convex Optimization) (Eq. 7):
 
 $$\sqrt{\Delta x_{nt}^T\nabla^2 f(\alpha)\Delta x_{nt}}$$
 
-In a for loop, we calculate the newton step and update the alphas:
+In a loop, we calculate the newton step and update the alphas:
 $$A = A + ls_t*newtonStep$$
 
 $$ls_t$$ is the learning rate parameter found through backtracking line search. Alternatively, one can set ls_t manually to avoid the extra computation of the backtracking line search algorithm. (Backtracking line search is covered in Chapter 9 of the Convex Optimization book).
 
-We break out of the for loop once newton_decrement squared, divided by 2, is less than the tolerance.
+We break out of the loop once newton_decrement squared, divided by 2, is less than the tolerance.
 
-The newton method for loop is nested inside the barrier method for loop. In each subsequent iteration of the barrier method, we increase t (the barrier parameter) until we reach an optimal solution.
+The newton method loop is nested inside the barrier method loop. In each subsequent iteration of the barrier method, we increase t (the barrier parameter) until we reach an optimal solution.
 
 Vectorized form of f(A) (Eq. 8):
 
