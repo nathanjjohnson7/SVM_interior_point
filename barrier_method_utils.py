@@ -15,10 +15,10 @@ def backtracking_line_search(svm, newton_step, grads):
         backtracks += 1
     return ls_t, backtracks
 
-def newtons_method(svm, tolerance, best_acc=0.0, 
+def newtons_method(svm, tolerance, x_val, y_val, best_acc=0.0, 
                    barrier_method_counter=0, 
                    path="output.txt", fixed_lr=None
-                   verbose = False):
+                   ,verbose = False):
     counter = 0
     while True:
         grad = svm.gradients_f(svm.alphas)
@@ -31,6 +31,8 @@ def newtons_method(svm, tolerance, best_acc=0.0,
     
         counter+=1
         backtracks = 0
+        #backtracking line search is computationally expensive
+        #sometimes it's convenient to just use a fixed learning rate
         if(fixed_lr==None):
             ls_t, backtracks = backtracking_line_search(svm, newton_step, grad)
         else:
@@ -38,8 +40,8 @@ def newtons_method(svm, tolerance, best_acc=0.0,
         svm.alphas = svm.alphas + ls_t*newton_step
             
         bias = svm.get_bias()
-        preds = svm.predict_vectorized(bias, bow_val)
-        acc = accuracy(preds, labels_val)
+        preds = svm.predict_vectorized(bias, x_val)
+        acc = accuracy(preds, y_val)
         
         if(verbose and acc<=best_acc):
             print()
@@ -59,18 +61,18 @@ def newtons_method(svm, tolerance, best_acc=0.0,
             best_acc = acc
             
     return best_acc
-
-def barrier_method(svm, mu=2, path="output.txt", fixed_lr=None, tolerance = 0.002, verbose=False):
+                       
+def barrier_method(svm, x_val, y_val, mu=2, path="output.txt", fixed_lr=None, tolerance = 0.002, verbose=False):
     best_acc = 0.0
     for i in range(5000):
-        best_acc = newtons_method(svm, tolerance, best_acc, i, path=path, 
+        best_acc = newtons_method(svm, tolerance, x_val, y_val, best_acc, i, path=path, 
                                   fixed_lr=fixed_lr, verbose=verbose)
         svm.t*=mu
         
         print("******************Finished One Iteration of Barrier Method*********************")
         print("barrier iteration: ", i, "t: ", svm.t)
         bias = svm.get_bias()
-        preds = svm.predict_vectorized(bias, bow_val)
-        acc = accuracy(preds, labels_val)
+        preds = svm.predict_vectorized(bias, x_val)
+        acc = accuracy(preds, y_val)
         print("Accuracy: ", acc)
         print()
