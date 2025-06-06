@@ -37,7 +37,9 @@ $$f(\alpha) = \ - t\sum_{i=1}^N \alpha_i \ + \frac{1}{2} \sum_{i=1}^N \sum_{j=1}
 
 Now we have to minimize $$f(\alpha) \ s.t. \  \sum_{i=1}^N \alpha_i y_i = 0$$
 
-This is an equality constrained minimization. We solve using Newton's method (Eq. 6).
+This is an equality constrained minimization. We solve using Newton's method.
+
+We calculate the Newton step by solving the following KKT system (Eq. 6):
 
 $$\begin{bmatrix}\nabla^2f(\alpha)  &  Y\\\Y^T & 0\end{bmatrix}\begin{bmatrix}\Delta x_{nt} \\\ w\end{bmatrix}\ =\begin{bmatrix}-\nabla f(\alpha) \\\ 0 \end{bmatrix}$$
 
