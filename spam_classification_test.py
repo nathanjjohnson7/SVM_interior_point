@@ -140,8 +140,8 @@ if __name__ == '__main__':
     #when a high score is reached, the weights are saved to "output.txt"
     #set verbose to true to check for improvements
     #for this dataset, I interrupted the barrier method after the first iteration
-    svm = SVM(bow_train, labels_train.unsqueeze(-1), C=2, t=0.3)
-    barrier_method(svm, mu=2, path="output.txt", fixed_lr=0.3)
+    svm = SVM(bow_train, labels_train.unsqueeze(-1), C=10, t=20)
+    barrier_method(svm, bow_val, labels_val, mu=2, path="output.txt", fixed_lr=0.0003, verbose=True)
 
     #the best peforming weights are saved. We pick it up from output.txt
     f = open("output.txt", "r")
@@ -161,10 +161,9 @@ if __name__ == '__main__':
     #we train an svm on this smaller, balanced dataset
     #again, it's better to run the barrer_method in a separate file (or juptyer notebook) so you can stop training when necessary
     #for this dataset, I interrupted the barrier method after the first iteration
-    svm2 = SVM(bow_train[select_spam_ham_indexes], 
-               labels_train[select_spam_ham_indexes].unsqueeze(-1),
-               C=2, t=0.005)
-    barrier_method(svm2, mu=2, path="output2.txt", fixed_lr=0.01, tolerance = 0.0000002)
+    svm2 = SVM(bow_train[select_spam_ham_indexes],
+          labels_train[select_spam_ham_indexes].unsqueeze(-1), C=10, t=2)
+    barrier_method(svm2, bow_val, labels_val, mu=5, path="output2.txt", fixed_lr=0.03)
 
     #we pick up the best peforming model and run on the test set
     f = open("output2.txt", "r")
