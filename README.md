@@ -1,5 +1,7 @@
 # SVM (Support Vector Machine) - Interior Point Method
 
+This project implements a linear-kernel soft-margin SVM by solving the dual problem using interior-point methods. Inequality constraints are enforced using logarithmic barrier functions, and the resulting equality-constrained optimization problem is solved with Newton's method. The implementation follows techniques outlined in Convex Optimization by Boyd and Vandenberghe and Pattern Recognition and Machine Learning by Bishop.
+
 Lagrangian Dual of the Linear-Kernel Soft-Margin SVM (Eq. 1):
 
 $$\max_{\alpha} \ \sum_{i=1}^N \alpha_i \ - \frac{1}{2} \sum_{i=1}^N \sum_{j=1}^N \alpha_i\alpha_j y_i y_jx_ix_j^T $$
