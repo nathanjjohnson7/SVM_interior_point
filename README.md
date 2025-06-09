@@ -17,6 +17,8 @@ $$\alpha_i$$ -> dual variable for the i-th data point
 
 C denotes class overlap. A larger C allows less class overlap.
 
+Above is the equation that must be optimized.
+
 The bias is obtained by (Eq. 2):
 
 $$b \ = \frac{1}{|M|} \sum_{n\in M} \left( y_n \ - \sum_{i\in S}\alpha_iy_ix_nx_i^T\right)$$
