@@ -33,7 +33,7 @@ where N is the number of support vectors (a_i>0)
 
 Reference: Bishop, Pattern Recognition and Machine Learning (2006), Chapter 7
 
-We model the inequality constraints of the first equation as log barriers (Eq. 4, Eq. 5):
+To optmized the first equation, we model the inequality constraints as log barriers (Eq. 4, Eq. 5):
 
 $$\min_{\alpha} \ - \sum_{i=1}^N \alpha_i \ + \frac{1}{2} \sum_{i=1}^N \sum_{j=1}^N \alpha_i\alpha_j y_i y_jx_ix_j^T \ + \frac{1}{t}\left(\ - \sum_{i=1}^N\log\alpha_i\ - \sum_{i=1}^N\log(C-\alpha_i)\right)$$
 
