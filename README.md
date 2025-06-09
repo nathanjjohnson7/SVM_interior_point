@@ -11,7 +11,7 @@ $$\sum_{i=1}^N \alpha_i y_i = 0$$
 
 X -> Array of N input features vectors
 
-Y -> Vector of labels with length N
+Y -> Vector of labels with length N ($$y_i = 1$$ for positive class, $$y_i = -1$$ for negative class)
 
 $$\alpha_i$$ -> dual variable for the i-th data point
 
