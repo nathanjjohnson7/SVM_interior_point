@@ -19,6 +19,8 @@ C denotes class overlap. A larger C allows less class overlap.
 
 Above is the equation that must be optimized.
 
+After reaching optimal values for alpha, we can make predictions using the alpha values, the labels, and the input feature vectors using the two following equations:
+
 The bias is obtained by (Eq. 2):
 
 $$b \ = \frac{1}{|M|} \sum_{n\in M} \left( y_n \ - \sum_{i\in S}\alpha_iy_ix_nx_i^T\right)$$
