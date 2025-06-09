@@ -9,7 +9,7 @@ $$s.t. \ 0 \leq \alpha_i \leq C $$
 $$\sum_{i=1}^N \alpha_i y_i = 0$$
 
 
-X -> Array of features vectors with length N
+X -> Array of N features vectors
 
 Y -> Vector of labels with length N
 
