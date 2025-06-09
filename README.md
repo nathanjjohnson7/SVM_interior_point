@@ -13,7 +13,7 @@ X -> Array of features vectors with length N
 
 Y -> Vector of labels with length N
 
-$$\alpha_i$$ -> dual variable for ith data point
+$$\alpha_i$$ -> dual variable for the i-th data point
 
 C denotes class overlap. A larger C allows less class overlap.
 
