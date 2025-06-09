@@ -8,6 +8,10 @@ $$\max_{\alpha} \ \sum_{i=1}^N \alpha_i \ - \frac{1}{2} \sum_{i=1}^N \sum_{j=1}^
 $$s.t. \ 0 \leq \alpha_i \leq C $$
 $$\sum_{i=1}^N \alpha_i y_i = 0$$
 
+X -> Array of features vectors with length N
+Y -> Vector of labels with length N
+$$\alpha_i$$ -> weight for ith data point
+
 C denotes class overlap. A larger C allows less class overlap.
 
 The bias is obtained by (Eq. 2):
